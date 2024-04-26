@@ -38,9 +38,14 @@ const app = new Elysia()
 })
 .post("/records/:userId", ({params: {userId}, body, set}) => {
     if (typeof body === "string"){
-        const formattedRequest = body.split('\n').map((v) => v.trim());
-        insertUserRecordQuery.run({$id: userId, $name: formattedRequest[0], $points: formattedRequest[1]});
-        console.log(`Query: ${insertUserRecordQuery.toString()}`);
+        try{
+            const formattedRequest = body.split('\n').map((v) => v.trim());
+            insertUserRecordQuery.run({$id: userId, $name: formattedRequest[0], $points: formattedRequest[1]});
+            set.status = 200
+        }
+        catch{
+            set.status = 400
+        }
         return;
     }
 })
@@ -58,5 +63,5 @@ const app = new Elysia()
 .listen(8080);
 
 console.log(
-    `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+    `Server is running at ${app.server?.hostname}:${app.server?.port}`
 );
