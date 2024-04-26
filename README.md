@@ -5,7 +5,7 @@ A simple TypeScript app that has a few rest endpoints to write numbers to a data
 1. Install [Bun](https://bun.sh/)
 2. Download/Clone source code
 3. Run this command in the souce code folder: `bun install` to install dpendencies
-4. To run, type this command in the folder: `bun run index.ts`
+4. To run, type this command in the folder: `bun run src/index.ts`
 5. This will start to run a local webserver on port 8080.
 
 ## Usage
